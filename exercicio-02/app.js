@@ -245,6 +245,6 @@ let newName = name.replaceAll("w", "W");
 - Exiba a "newName" no console;
 */
 
-newName = `${name}`;
+newName = name;
 
 console.log(newName);
