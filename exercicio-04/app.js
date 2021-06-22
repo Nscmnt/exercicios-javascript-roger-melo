@@ -12,8 +12,13 @@
 
   "Minhas 3 séries favoritas são: SÉRIE_01, SÉRIE_02 e SÉRIE_03."
 */
+const my3FavoriteTVShows = ["Game Of Thrones", "Prison Break", "Braking Bad"];
 
+[serie1, serie2, serie3] = my3FavoriteTVShows;
 
+const sentence = `Minhas 3 séries favoritas são: ${serie1}, ${serie2} e ${serie3}  `;
+
+// console.log(sentence);
 
 /*
   02 - Comente o console.log() acima e:
@@ -21,9 +26,7 @@
   - Exiba no console um boolean indicando se o array de séries que você criou  
     possui 3 itens.
 */
-
-
-
+// console.log(my3FavoriteTVShows.length === 3);
 /*
   03 - Comente o console.log() acima e:
 
@@ -34,7 +37,11 @@
   - Exiba no console o boolean que a "isRandomTVShowIncluded" recebeu.
 */
 
-const randomTVShow = 'Watchmen'
+const randomTVShow = "Watchmen";
+
+const isRandomTVShowIncluded = my3FavoriteTVShows.includes(randomTVShow);
+
+// console.log(isRandomTVShowIncluded);
 
 /*
   04 - Comente o console.log() acima e:
@@ -46,9 +53,9 @@ const randomTVShow = 'Watchmen'
 
   "O tipo de dado que a const "isRandomTVShowIncluded" armazena é: TIPO_DE_DADO."
 */
+const typeSentence = typeof isRandomTVShowIncluded;
 
-
-
+// console.log(typeSentence);
 /*
   05 - Comente o console.log() acima e:
 
@@ -56,14 +63,22 @@ const randomTVShow = 'Watchmen'
     e "BOOLEAN" pela informação correta (true ou false);
   - Converta explicitamente este boolean em uma string ao inserí-lo na frase;
   - A 1ª letra do boolean deve ser maiúscula;
-  - Dica: se você perceber que está repetindo o mesmo número na string, cogite  
-    armazenar este número em uma constante e usá-la na frase.
+  - Dica: se você perceber que está repetindo o mesmo número na string, cogite armazenar este número em uma constante e usá-la na frase.
 
   "A string que a "typeSentence" armazena tem mais de NÚMERO_DE_CARACTERES  
   caracteres? BOOLEAN."
 */
 
+const NUMERO_DE_CARACTERES = 39;
+const isMoreThan = typeSentence.length > NUMERO_DE_CARACTERES;
 
+isMoreThan.valueOf();
+
+// console.log(
+//   `A string que a \"typeSentence\" armazena tem mais de ${NUMERO_DE_CARACTERES} caracteres? ${
+//     isMoreThan.toString()[0].toUpperCase() + isMoreThan.toString().slice(1)
+//   }`
+// );
 
 /*
   06 - Comente o console.log() acima e:
@@ -71,11 +86,16 @@ const randomTVShow = 'Watchmen'
   - Após a constante "falsyValues", exiba no console a frase abaixo,  
     substituindo "NÚMERO_DE_ITENS" e "BOOLEAN" pelas informações corretas.
 
-  "Todos os NÚMERO_DE_ITENS itens do array "falsyValues" são falsy. Inclusive o  
-  BOOLEAN."
+  "Todos os NÚMERO_DE_ITENS itens do array "falsyValues" são falsy. Inclusive o  BOOLEAN."
 */
 
-const falsyValues = [0, "", false, '', ``, null, undefined, NaN]
+const falsyValues = [0, "", false, "", ``, null, undefined, NaN];
+
+// console.log(
+//   `Todos os ${
+//     falsyValues.length
+//   } itens do array "falsyValues" são falsy. Inclusive o  ${false}.`
+// );
 
 /*
   07 - Comente o console.log() acima e:
@@ -84,9 +104,14 @@ const falsyValues = [0, "", false, '', ``, null, undefined, NaN]
   - Armazene em uma constante "crazyConversion" a conversão da "crazyOperation"  
     em boolean.
   - Você sabe por que essa conversão resultou em true?
+
+  // false + 1 = 1
 */
+const crazyOperation = null + 1;
 
+const crazyConversion = !!crazyOperation;
 
+// console.log(crazyConversion);
 
 /*
   08 - Comente o console.log() acima e:
@@ -100,9 +125,21 @@ const falsyValues = [0, "", false, '', ``, null, undefined, NaN]
   "A soma entre o 1º e o 3º item de "ages" é menor ou igual a 92. Essa afirmação  
   é: BOOLEAN."
 */
+const ages = [31, 82, 61, 11];
 
+const agesSum = ages.reduce((acc, age, idx) => {
+  if (idx === 0 || idx === 2) {
+    acc += age;
+  }
 
+  return acc;
+}, 0);
 
+// console.log(
+//   `A soma entre o 1º e o 3º item de "ages" é menor ou igual a 92. Essa afirmação é: ${
+//     agesSum >= 92
+//   }.`
+// );
 /*
   09 - Comente o console.log() acima e:
 
@@ -112,7 +149,9 @@ const falsyValues = [0, "", false, '', ``, null, undefined, NaN]
   - Exiba a "isNotAString" no console.
 */
 
+const isNotAString = typeof randomTVShow !== "string";
 
+// console.log(isNotAString);
 
 /*
   10 - Comente o console.log() acima e:
@@ -122,4 +161,6 @@ const falsyValues = [0, "", false, '', ``, null, undefined, NaN]
   - Não utilize o método includes desta vez.
 */
 
-const evenNumbers = [0, 2, 4, 6, 8, 10]
+const evenNumbers = [0, 2, 4, 6, 8, 10];
+
+// console.log(evenNumbers.some((number) => number === 8));
