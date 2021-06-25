@@ -10,10 +10,10 @@ Faça o seguinte:
 - E linke este arquivo, app.js, antes do fechamento da tag body.
 */
 
+
 /*
 02 - Inicie o seu servidor local e abra o console do browser.
 */
-
 /*
 03 - Para certificar-se que este arquivo realmente está linkado, exiba a frase  
 "JS is Awesome!" em um alert no browser.

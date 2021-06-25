@@ -23,7 +23,23 @@
     "Nem pera nem abacaxi existem no array "fruits".".
 */
 
-const fruits = ['morango', 'banana', 'mamão']
+const fruits = ["morango", "banana", "mamão"];
+
+const hasAbacaxi = fruits.includes("abacaxi");
+
+if (hasAbacaxi) {
+  console.log('A string "abacaxi" existe no array "fruits".');
+}
+
+const hasPera = fruits.includes("pera");
+
+if (hasPera) {
+  console.log('A string "abacaxi" existe no array "fruits".');
+}
+
+if (!hasAbacaxi && !hasPera) {
+  // console.log('Nem pera nem abacaxi existem no array "fruits".');
+}
 
 /*
   02
@@ -38,61 +54,133 @@ const fruits = ['morango', 'banana', 'mamão']
   lógico precisam ter a constante especificada. Exemplo: hour > x && hour < y.
 */
 
+const currentHour = new Date().getHours();
+
+if (currentHour > 6 && currentHour < 12) {
+  // console.log("Bom dia!");
+} else if (currentHour > 12 && currentHour < 18) {
+  // console.log("Boa tarde!");
+} else {
+  // console.log("Boa Noite!");
+}
+
 /*
   03
 
   - Armazene sua idade em uma constante;
-  - Escreva uma estrutura condicional em que, se a idade é 7 anos ou menos, ou  
-    se a idade é 65 anos ou mais, a frase "Para você, a entrada é grátis!" é  
-    armazenada em uma variável;
-  - Se a idade não atende às condições acima, a variável deve armazenar a  
-    mensagem "A entrada é R$ 30,00.";
+  - Escreva uma estrutura condicional em que, se a idade é 7 anos ou menos, ou se a idade é 65 anos ou mais, a frase "Para você, a entrada é grátis!" é armazenada em uma variável;
+  - Se a idade não atende às condições acima, a variável deve armazenar a mensagem "A entrada é R$ 30,00.";
   - Exiba a mensagem no console;
-  - Agora, teste diferentes idades para se certificar que a condição do `if`  
-    também está funcionando.
+  - Agora, teste diferentes idades para se certificar que a condição do `if` também está funcionando.
 */
+
+const age = 32;
+let message = "";
+
+if (age < 7 || age > 65) {
+  message = "Para você, a entrada é grátis!";
+} else {
+  message = "A entrada é R$ 30,00.";
+}
+
+// console.log(message);
 
 /*
   04
 
-  - Utilize um for loop para gerar um novo array com apenas os números entre  
-    11 e 90 presentes no array "numbers" (incluindo 11 e 90);
+  - Utilize um for loop para gerar um novo array com apenas os números entre 11 e 90 presentes no array "numbers" (incluindo 11 e 90);
   - Exiba o novo array no console;
   - O resultado deve ser: [34, 46, 90, 25, 11, 89, 76].
 */
 
-const numbers = [7, 92, 34, 46, 90, 25, 11, 3, 89, 76, 99]
+const numbers = [7, 92, 34, 46, 90, 25, 11, 3, 89, 76, 99];
+
+const numbersBetween11And90 = [];
+
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] >= 11 && numbers[i] <= 90) {
+    numbersBetween11And90.push(numbers[i]);
+  }
+}
+
+// console.log(numbersBetween11And90);
 
 /*
   05
 
-  - O array "crazyArray" (abaixo) possui 3 tipos de dados: numbers, booleans  
-    e strings;
-  - Considerando este array, substitua os "X" da frase abaixo pelas informações  
-    corretas;
+  - O array "crazyArray" (abaixo) possui 3 tipos de dados: numbers, booleans e strings;
+  - Considerando este array, substitua os "X" da frase abaixo pelas informações corretas;
   - Gere essas informações à partir de um for loop;
   - Exiba a frase no console.
 
   "O crazyArray tem X booleans, X números e X strings."
 */
 
-const crazyArray = [true, 869, 'oi', 71, false, 83, '35', true, 397, 'js', false]
+const crazyArray = [
+  true,
+  869,
+  "oi",
+  71,
+  false,
+  83,
+  "35",
+  true,
+  397,
+  "js",
+  false,
+];
+
+let booleansCount = 0,
+  numbersCount = 0,
+  stringsCount = 0;
+
+for (let i = 0; i < crazyArray.length; i++) {
+  if (typeof crazyArray[i] === "boolean") {
+    booleansCount++;
+  } else if (typeof crazyArray[i] === "number") {
+    numbersCount++;
+  } else {
+    stringsCount++;
+  }
+}
+
+// console.log(
+//   `O crazyArray tem ${booleansCount} booleans, ${numbersCount} números e ${stringsCount} strings.`
+// );
 
 /*
   06
 
-  - Abaixo do array "randomNumbers", utilize um for loop para gerar 2 novos  
-    arrays: um array com apenas os números ímpares do "randomNumbers" e um outro  
-    array com apenas os números pares;
-  - Após isso, utilizando os dois arrays que você criou, exiba a frase abaixo  
-    no console, substituindo "XX, XX e XX" pelos números corretos. Os números  
-    da frase não devem ser inseridos com a notação "item[index]" e os "e" antes  
-    do último número ímpar e do último número par devem constar na frase;
+  - Abaixo do array "randomNumbers", utilize um for loop para gerar 2 novos arrays: um array com apenas os números ímpares do "randomNumbers" e um outro array com apenas os números pares;
+  - Após isso, utilizando os dois arrays que você criou, exiba a frase abaixo no console, substituindo "XX, XX e XX" pelos números corretos. 
+  Os números da frase não devem ser inseridos com a notação "item[index]" e os "e" antes do último número ímpar e do último número par devem constar na frase;
   
-  - Dica: para saber se um número é par, o restante da divisão dele por 2 deve  
-    ser 0.
+  - Dica: para saber se um número é par, o restante da divisão dele por 2 deve ser 0.
 
   "Numeros ímpares: XX, XX e XX. Números pares: XX, XX e XX."
 */
 
-const randomNumbers = [73, 4, 67, 10, 31, 58]
+const randomNumbers = [73, 4, 67, 10, 31, 58];
+
+const oddArray = [];
+const evenArray = [];
+
+for (let i = 0; i < randomNumbers.length; i++) {
+  if (randomNumbers[i] % 2 === 0) {
+    evenArray.push(randomNumbers[i]);
+  } else {
+    oddArray.push(randomNumbers[i]);
+  }
+}
+
+const lastEvenNumber = evenArray[evenArray.length - 1].toString();
+const lastOddNumber = oddArray[oddArray.length - 1].toString();
+
+console.log(
+  `Numeros ímpares: ${oddArray
+    .join(", ")
+    .replace(`, ${lastOddNumber}`, ` e ${lastOddNumber}`)}. 
+  Números pares: ${evenArray
+    .join(", ")
+    .replace(`, ${lastEvenNumber}`, ` e ${lastEvenNumber}`)}.`
+);
