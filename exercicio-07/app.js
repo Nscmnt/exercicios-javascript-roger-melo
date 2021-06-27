@@ -5,7 +5,7 @@
   - O resultado exibido no console deve ser: false true.
 */
 
-console.log(true, false)
+console.log(!true, !false);
 
 /*
   02
@@ -16,7 +16,15 @@ console.log(true, false)
   - Se existir, exiba no console a mensagem "Existe um leão no array animals.".
 */
 
-const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo']
+const animals = ["macaco", "tucano", "elefante", "pavão", "hipopótamo"];
+
+const existLion = animals.includes("leão");
+
+if (existLion) {
+  console.log("Existe um leão no array animals.");
+} else {
+  console.log("Leão não existe no array animals.");
+}
 
 /*
   03
@@ -29,7 +37,18 @@ const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo']
   "A soma ultrapassou 400. Até aqui, o valor atual é RESULTADO_DA_SOMA."
 */
 
-const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43]
+const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43];
+
+let sum = 0;
+
+for (let i = 0; i < randomNumbers.length; i++) {
+  sum += randomNumbers[i];
+
+  if (sum > 400) {
+    console.log(`A soma ultrapassou 400. Até aqui, o valor atual é ${sum}.`);
+    break;
+  }
+}
 
 /*
   04
@@ -40,14 +59,31 @@ const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43]
   - Exiba a frase no console.
 */
 
-const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sabedoria.']
+const sentence = [
+  "A",
+  "certeza",
+  "dúvida",
+  "é",
+  "o",
+  "princípio",
+  "da",
+  "sabedoria.",
+];
 
+let sentence_ = "";
+
+for (let i = 0; i < sentence.length; i++) {
+  if (sentence[i] === "certeza") continue;
+
+  sentence_ += `${sentence[i]} `;
+}
+
+console.log(sentence_);
 /*
   05
 
   - Itere sobre o array "randomValues" apenas até a 4ª string dele;
-  - Exiba a string abaixo no console, mantendo a formatação de lista e inserindo  
-    as informações corretas:
+  - Exiba a string abaixo no console, mantendo a formatação de lista e inserindo as informações corretas:
 
   "
     3 informações sobre o array randomValues:
@@ -57,7 +93,54 @@ const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sab
   "
 */
 
-const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS', 97, true, 'Git', 11, 'sticker', false, 'GitHub', true, null]
+const first4Strings = [];
+let booleansCount = 0,
+  stringsCount = 0;
+
+const randomValues = [
+  57,
+  false,
+  "JS",
+  [],
+  true,
+  "HTML",
+  31,
+  null,
+  false,
+  "CSS",
+  97,
+  true,
+  "Git",
+  11,
+  "sticker",
+  false,
+  "GitHub",
+  true,
+  null,
+];
+
+for (let i = 0; i < randomValues.length; i++) {
+  if (typeof randomValues[i] === "string") {
+    first4Strings.push(randomValues[i]);
+    stringsCount++;
+  } else if (typeof randomValues[i] === "boolean") {
+    booleansCount++;
+  }
+
+  if (stringsCount === 4) {
+    console.log(`
+    3 informações sobre o array randomValues:
+      - As primeiras 4 strings são ${first4Strings.slice(
+        0,
+        first4Strings.length - 1
+      )} e ${first4Strings[first4Strings.length - 1]};
+      - Até que as primeiras 4 strings fossem iteradas, ${booleansCount} booleans foram iterados;
+      - O array foi iterado por ${i + 1} vezes.
+  `);
+
+    break;
+  }
+}
 
 /*
   06
@@ -79,7 +162,28 @@ const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS',
     da bebida além da que você escolheu.
 */
 
-// const drinkType
+const drinkType = "água";
+
+let message = ";";
+
+switch (drinkType) {
+  case "água":
+    message =
+      "Substância química cujas moléculas são formadas por dois átomos de hidrogênio e um de oxigênio.";
+    break;
+  case "refrigerante":
+    message =
+      "Bebida não alcoólica e não fermentada, fabricada industrialmente, à base de água mineral e açúcar.";
+    break;
+  case "suco":
+    message = "Bebida produzida do líquido extraído de frutos.";
+    break;
+  default:
+    message = "Bebida desconhecida.";
+    break;
+}
+
+console.log(message);
 
 /*
   07
@@ -89,7 +193,7 @@ const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS',
     para testar o switch que você escreveu.
 */
 
-const a = 2
+const a = 1;
 
 // if (a === 0) {
 //   console.log(`O valor de "a" é ${a}`)
@@ -98,3 +202,15 @@ const a = 2
 // } else {
 //   console.log('O valor de "a" é qualquer número, exceto 0 e 1')
 // }
+
+switch (a) {
+  case 0:
+    console.log(`O valor de "a" é ${a}`);
+    break;
+  case 1:
+    console.log(`O valor de "a" é ${a}`);
+    break;
+  default:
+    console.log(`O valor de "a" é qualquer número exceto 0 e 1`);
+    break;
+}
