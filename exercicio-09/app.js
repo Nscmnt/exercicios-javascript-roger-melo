@@ -1,7 +1,7 @@
 /*
   Dica:
 
-  - Alguns exercícios utilizarão métodos, propriedades e funcionalidades vistos  
+  - Alguns exercícios utilizarão métodos, propriedades e funcionalidades vistos 
     no começo do curso. Se for necessário, reveja partes das aulas anteriores  
     para relembrar.
 */
@@ -13,9 +13,11 @@
     valor no console.
 */
 
-function convertToString (value) {
-  return String(value)
-}
+const convertToString = (value) => {
+  return String(value);
+};
+
+// console.log(convertToString("10"));
 
 /*
   02
@@ -24,15 +26,28 @@ function convertToString (value) {
     recebida por parâmetro possui.
 */
 
+const getStringLength = (str) => {
+  return str.length;
+};
+
+// console.log(getStringLength("Jorge"));
+
 /*
   03
 
-  - Crie uma função que retorne todos os caracteres de uma string em letras  
-    minúsculas;  
+  - Crie uma função que retorne todos os caracteres de uma string em letras minúsculas;  
   - Utilize a função para exibir a string abaixo no console.
 
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
+
+const convertToLowercase = (str) => {
+  // console.log(str.toLowerCase());
+};
+
+convertToLowercase(
+  "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
+);
 
 /*
   04
@@ -41,26 +56,49 @@ function convertToString (value) {
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
 
+const getIndexOf = (caractere, str) => {
+  return str.indexOf(caractere);
+};
+
+// console.log(getIndexOf("e", "Jorge"));
+
 /*
   05
 
-  - Crie uma função que, ao ser invocada, retorna um boolean indicando se o item  
-    passado por argumento existe no array (também passado por argumento).
+  - Crie uma função que, ao ser invocada, retorna um boolean indicando se o item  passado por argumento existe no array (também passado por argumento).
 */
+
+const existsItem = (item, arr) => {
+  return arr.includes(item);
+};
+
+// console.log(existsItem("Jorge", ["Anna", "loki", "Jorge"]));
 
 /*
   06
 
-  - Crie uma função que retorna a concatenação de 2 arrays, passados como  
-    argumentos em sua invocação;
+  - Crie uma função que retorna a concatenação de 2 arrays, passados como argumentos em sua invocação;
 */
+
+const concatArrs = (arr1, arr2) => {
+  return arr1.concat(arr2);
+};
+
+// console.log(concatArrs(["Jorge"], ["Loki"]));
 
 /*
   07
 
-  - Crie uma função que retorna o array passado como argumento em sua invocação,  
-    mas com o último item removido.
+  - Crie uma função que retorna o array passado como argumento em sua invocação, mas com o último item removido.
 */
+
+const removeLastItem = (arr) => {
+  arr.pop();
+
+  return arr;
+};
+
+// console.log(removeLastItem(["Jorge", "Anna", "Other"]));
 
 /*
   08
@@ -69,6 +107,13 @@ function convertToString (value) {
     invocação é null.
 */
 
+const isNull = (value) => {
+  const bool = value === null;
+
+  return bool;
+};
+// console.log(isNull(null));
+
 /*
   09
 
@@ -76,9 +121,18 @@ function convertToString (value) {
     parâmetro;
   - Crie outra função que apenas exibe seu nome no console;
   - Invoque a função que recebe um callback por parâmetro, passando como  
-    argumento a função que exibe seu nome no console e veja se o nome realmente  
-    foi exibido.
+    argumento a função que exibe seu nome no console e veja se o nome realmente foi exibido.
 */
+
+function invokeCallback(fn) {
+  fn();
+}
+
+function showMyName() {
+  console.log("Jorge");
+}
+
+// console.log(invokeCallback(showMyName));
 
 /*
   10
@@ -87,20 +141,32 @@ function convertToString (value) {
     A invocação da função recebida por parâmetro deve receber um valor como  
     argumento;
   - Crie uma função que retorna o triplo de um número recebido por parâmetro;
-  - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
-    resulte no triplo de 33.
+  - Faça com que a invocação da função descrita no 1º item deste exercício (10)  resulte no triplo de 33.
 */
+
+function invokeCallback2(fn, n) {
+  return fn(n);
+}
+
+function returnTriple(n) {
+  return n * 3;
+}
+
+// console.log(invokeCallback2(returnTriple, 33));
 
 /*
   11
 
-  - Utilizando um forEach, baseado no array "numbers", a cada iteração, exiba a  
-    mensagem abaixo no console, substituindo os "X" pelas informações corretas;
+  - Utilizando um forEach, baseado no array "numbers", a cada iteração, exiba a  mensagem abaixo no console, substituindo os "X" pelas informações corretas;
   
   "O Xº item do array [X, X, X] é X."
 */
 
-const numbers = [1, 2, 3]
+const numbers = [1, 2, 3];
+
+numbers.forEach((number, i, arr) => {
+  // console.log(`O ${i + 1}º item do ${arr} é ${number}.`);
+});
 
 /*
   12
@@ -110,19 +176,22 @@ const numbers = [1, 2, 3]
     criada.
 */
 
-const letters = ['v', 'e', 'p']
-let lettersCopy = []
+const letters = ["v", "e", "p"];
+let lettersCopy = [];
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+// for (let i = 0; i < letters.length; i++) {
+//   lettersCopy.push(letters[i]);
+// }
+
+letters.forEach((letter) => lettersCopy.push(letter));
+
+// console.log(lettersCopy);
 
 /*
   13
 
   - Inclua o markup abaixo em seu index.html;
-  - Gere um template HTML com parágrafos. Cada parágrafo deve conter um item do  
-    array "review";
+  - Gere um template HTML com parágrafos. Cada parágrafo deve conter um item do  array "review";
   - Ao gerar o template, verifique no browser se os parágrafos foram incluídos  
     dentro da section vazia do markup abaixo.
 
@@ -135,24 +204,25 @@ for (let i = 0; i < letters.length; i++) {
   </article>
 */
 
-const section = document.querySelector('[data-js="section"]')
+const section = document.querySelector('[data-js="section"]');
 
 const review = [
-  'Eu sempre adorei o filme e quando descobri que tinha o livro também fiquei doido. Demorei um pouco mas acabei comprando e finalmente li \o/.',
-  'O primeiro filme foi baseado nesse livro, porém o livro (como sempre) é muito mais completo, com mais personagens, mais acontecimentos e até mesmo mais dinossauros. Na verdade nesse livro tem coisas do segundo e terceiro filme também, eles mudaram bastante nos filmes, acho que pra ficar mais comercial, e se o filme é bom, o livro é 100 vezes melhor.',
-  'Michael é um ótimo autor, esse sim pesquisa muito antes de escrever um livro, além da história que já prende sua atenção, ele fala bastante de genética (pra explicar como os dinossauros foram criados) e acaba falando um pouco de programação (informática), por causa dos programas avançados e modernos que o parque tinha. E isso foi uma das coisas que eu achei muito legal, ele explica as coisas com gráficos, tabelas, códigos ... enfim, o cara é foda hahaha.',
-  'Recomendo esse livro pra quem curte uma boa história de ficção. Apesar de muita gente pensar que o livro não tem graça, porque o legal mesmo é ver o dinossauro no filme, com todos os efeitos especiais, eu digo pra deixar esse pensamento de lado, pois a história é tão bem contada e os detalhes são tão bem relatados, que você passa a fazer parte da história, e vive todas as emoções hahaha.'
-]
+  "Eu sempre adorei o filme e quando descobri que tinha o livro também fiquei doido. Demorei um pouco mas acabei comprando e finalmente li o/.",
+  "O primeiro filme foi baseado nesse livro, porém o livro (como sempre) é muito mais completo, com mais personagens, mais acontecimentos e até mesmo mais dinossauros. Na verdade nesse livro tem coisas do segundo e terceiro filme também, eles mudaram bastante nos filmes, acho que pra ficar mais comercial, e se o filme é bom, o livro é 100 vezes melhor.",
+  "Michael é um ótimo autor, esse sim pesquisa muito antes de escrever um livro, além da história que já prende sua atenção, ele fala bastante de genética (pra explicar como os dinossauros foram criados) e acaba falando um pouco de programação (informática), por causa dos programas avançados e modernos que o parque tinha. E isso foi uma das coisas que eu achei muito legal, ele explica as coisas com gráficos, tabelas, códigos ... enfim, o cara é foda hahaha.",
+  "Recomendo esse livro pra quem curte uma boa história de ficção. Apesar de muita gente pensar que o livro não tem graça, porque o legal mesmo é ver o dinossauro no filme, com todos os efeitos especiais, eu digo pra deixar esse pensamento de lado, pois a história é tão bem contada e os detalhes são tão bem relatados, que você passa a fazer parte da história, e vive todas as emoções hahaha.",
+];
 
-let paragraphs = ''
+let paragraphs = "";
 
-section.innerHTML = paragraphs
+review.forEach((paragraph) => (paragraphs += paragraph));
+
+section.innerHTML = paragraphs;
 
 /*
   14
 
-  - Implemente uma função que retorna uma string com a quantidade de pessoas que  
-    curtiram um post, conforme descrito a seguir;
+  - Implemente uma função que retorna uma string com a quantidade de pessoas que curtiram um post, conforme descrito a seguir;
   - A função deve receber por parâmetro um array com os nomes das pessoas que  
     curtiram o post/vídeo/foto;  
   - Se o array recebido estiver vazio, a mensagem que a função deve retornar é  
@@ -164,7 +234,57 @@ section.innerHTML = paragraphs
   - Se o array conter 3 nomes, a mensagem retornada deve ser  
     "NOME_1, NOME_2 e NOME_3 curtiram isso";  
   - Se o array conter 4 ou mais nomes, a mensagem retornada deve ser  
-    "NOME_1, NOME_2 e mais X pessoas curtiram isso". O "X" deve ser substituído  
+    "NOME_1, NOME_2 e mais X pessoas curtiram isso". O "X" deve ser substituído 
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+function likedCount(arr) {
+  if (arr.length === 0) {
+    console.log("Ninguém curtiu isso");
+  } else if (arr.length === 1) {
+    console.log(arr[0] + " curtiu isso");
+  } else if (arr.length === 2) {
+    console.log(arr.join(" e ") + " curtiram esse isso");
+  } else if (arr.length === 3) {
+    console.log(`${arr.slice(0, 2).join(", ")} e ${arr[2]} curtiram esse post`);
+  } else {
+    console.log(
+      `${arr.slice(0, 2).join(", ")} e mais ${
+        arr.length - 2
+      } pessoas curtiram isso`
+    );
+  }
+}
+
+likedCount([
+  "Jorge",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+  "Anna",
+  "loki",
+]);
