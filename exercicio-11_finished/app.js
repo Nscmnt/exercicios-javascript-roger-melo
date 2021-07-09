@@ -5,6 +5,8 @@
   - Ela deve ter um escopo global.
 */
 
+const name = "Jorge";
+
 /*
   02
 
@@ -12,12 +14,18 @@
   - Crie uma função que ao ser invocada, exibe sua idade no console;
   - Dentro da função, declare uma let que armazena a sua idade;
   - Exiba sua idade no console, através da invocação da função;
-  - Do lado de fora da função exiba no console o valor da let que foi declarada  
-    dentro da função;
+  - Do lado de fora da função exiba no console o valor da let que foi declarada dentro da função;
   - Um erro com a mensagem "Uncaught ReferenceError: SUA_VARIÁVEL is not  
     defined" será exibido no console;
   - Você sabe por que isso aconteceu?
 */
+
+function showAge() {
+  let age = 32;
+  console.log(age);
+}
+
+showAge();
 
 /*
   03
@@ -36,6 +44,23 @@
     - getColorsMessage, que é um método que retorna a mensagem  
       "O NOME_DO_CARRO está disponível nas cores COR_01, COR_02 e COR_03".
 */
+const car = {
+  name: "Spider",
+  brand: "Ferrari",
+  colors: ["Black", "White", "Orange"],
+  isRunning: false,
+  run() {
+    this.isRunning = true;
+    return `A ${this.name} está em movimento`;
+  },
+  stop() {
+    this.isRunning = false;
+    return `A ${this.name} está parado`;
+  },
+  getColorsMessage() {
+    return `A ${this.name} está disponível nas cores ${this.colors[0]}, ${this.colors[1]} e ${this.colors[2]}`;
+  },
+};
 
 /*
   04
@@ -43,11 +68,14 @@
   - Faça o carro andar e exiba no console se ele realmente está em movimento.
 */
 
+console.log(car.run(), " - em movimento ? ", car.isRunning);
+
 /*
   05
 
   - Faça o carro parar e exiba no console se ele realmente está parado.
 */
+console.log(car.stop(), " - em movimento ?", car.isRunning);
 
 /*
   06
@@ -55,9 +83,13 @@
   - Exiba, no console, a mensagem com as cores do carro.
 */
 
+console.log(car.getColorsMessage());
+
 /*
   07
 
   - Exiba, no console, a mensagem "O carro é um MARCA_DO_CARRO NOME_DO_CARRO";
   - Utilize a notação de colchetes para acessar as propriedades do carro.
 */
+
+console.log(`O carro é ums ${car.brand} ${car.name}`);
