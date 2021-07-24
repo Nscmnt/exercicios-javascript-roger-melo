@@ -13,6 +13,41 @@
       executado quando o request anterior for finalizado.
 */
 
+const url = "https://pokeapi.co/api/v2/pokemon/";
+
+const pokemons = ["bulbasaur", "charmander", "squirtle"];
+
+// pokemons.forEach((pokemon) =>
+//   getPokemon(`${url}${pokemon}`, (pokemonName) => {
+//     console.log(`Pokémon obtido: ${pokemonName}`);
+//   })
+// );
+
+//  function getPokemon(url, callback) {
+//   fetch(url)
+//     .then((data) => data.json())
+//     .then((pokemon) => callback(pokemon.name))
+//     .catch((err) => console.log("Não foi possível obter o Pokémon", err));
+// }
+
+async function fetchPokemon(url, callback) {
+  try {
+    const get = await fetch(url);
+    const data = await get.json();
+    const pokemon = await data.name;
+
+    callback(`Pokemon obtido ${pokemon}`);
+  } catch (error) {
+    callback("Não foi possível obter o Pokémon");
+  }
+}
+
+// pokemons.forEach((pokemon) => {
+//   fetchPokemon(`${url + pokemon}`, function (message) {
+//     console.log(message);
+//   });
+// });
+
 /*
   02
 
@@ -35,6 +70,22 @@
   curso, onde falaremos sobre TDD. Vá se aquecendo =)
 */
 
+function map(arr, callback) {
+  const newArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(callback(arr[i]));
+  }
+
+  return newArr;
+}
+
+const result = map([1, 2, 3], (number) => number * 2); // [2, 4, 6];
+const result2 = map([1, 2, 3], (number) => number * 3); // [3, 6, 9]
+
+// console.log(result);
+// console.log(result2);
+
 /*
   03
 
@@ -43,11 +94,13 @@
 */
 
 const person = {
-  name: 'Roger',
-  getName: () => this.name
-}
+  name: "Roger",
+  getName() {
+    return this.name;
+  },
+};
 
-// console.log(person.getName())
+// console.log(person.getName());
 
 /*
   04
@@ -58,8 +111,10 @@ const person = {
     delas.
 */
 
-const x = 'x'
-// const x = 'y'
+const x = "x";
+{
+  const x = "y";
+}
 
 /*
   05
@@ -69,13 +124,16 @@ const x = 'x'
 */
 
 const getFullName = (user) => {
-  const firstName = user.firstName
-  const lastName = user.lastName
+  // const firstName = user.firstName;
+  // const lastName = user.lastName;
+  const { firstName, lastName } = user;
 
-  return `${firstName} ${lastName}`
-}
+  const fullname = `${firstName} ${lastName}`;
 
-console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
+  return fullname;
+};
+
+console.log(getFullName({ firstName: "Afonso", lastName: "Solano" }));
 
 /*
   06
@@ -91,6 +149,23 @@ console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
   - Exiba o hexadecimal de 8 cores diferentes usando a função criada acima.
 */
 
+function convertToHex(color) {
+  const colorsToHex = {
+    red: "#FF0000",
+    orange: "FFA500",
+    white: "FFFFFF",
+    rebeccapurple: "#663399",
+    black: "#000000",
+  };
+
+  if (colorsToHex[color]) {
+    return `O hexadecimal para a cor ${color} é ${colorsToHex[color]}'`;
+  } else {
+    return `Não temos o equivalente hexadecimal para ${color}`;
+  }
+}
+
+// console.log(convertToHex("gray"));
 
 /*
   07
@@ -108,10 +183,26 @@ console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
 */
 
 const people = [
-  { id: 5 , name: 'Angelica', age: 18, federativeUnit: 'Pernambuco' },
-  { id: 81, name: 'Thales', age: 19, federativeUnit: 'São Paulo' },
-  { id: 47, name: 'Ana Carolina', age: 18, federativeUnit: 'Alagoas' },
-  { id: 87, name: 'Felipe', age: 18, federativeUnit: 'Minas Gerais' },
-  { id: 9 , name: 'Gabriel', age: 20, federativeUnit: 'São Paulo' },
-  { id: 73, name: 'Aline', age: 19, federativeUnit: 'Brasília' }
-]
+  { id: 5, name: "Angelica", age: 18, federativeUnit: "Pernambuco" },
+  { id: 81, name: "Thales", age: 19, federativeUnit: "São Paulo" },
+  { id: 47, name: "Ana Carolina", age: 18, federativeUnit: "Alagoas" },
+  { id: 87, name: "Felipe", age: 18, federativeUnit: "Minas Gerais" },
+  { id: 9, name: "Gabriel", age: 20, federativeUnit: "São Paulo" },
+  { id: 73, name: "Aline", age: 19, federativeUnit: "Brasília" },
+];
+
+const ages = {};
+
+people.forEach((p) => {
+  validAge(p.age);
+});
+
+function validAge(ageValue) {
+  if (ages[ageValue]) {
+    ages[ageValue] += 1;
+  } else {
+    ages[ageValue] = 1;
+  }
+}
+
+console.log(ages);
