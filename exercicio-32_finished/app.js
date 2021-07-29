@@ -20,3 +20,31 @@
       listados na documentação: https://developers.giphy.com/docs/api/endpoint#search
   - Ignore os avisos no console. Para limpá-lo, pressione "ctrl + L".
 */
+
+const inputSearchEl = document.querySelector("#search");
+const btnSearchEl = document.querySelector("#btnSearch");
+const outEl = document.querySelector(".out");
+const spanErrorEl = document.querySelector(".error");
+
+btnSearchEl.addEventListener("click", getGif);
+
+function getGif(event) {
+  event.preventDefault();
+  if (inputSearchEl.value !== "") {
+    fetch(
+      `https://api.giphy.com/v1/gifs/search?api_key=7MNx6Rx5tRAKfGFiTNGMr3CSWPIX8tSK&limit=1&q=${inputSearchEl.value}`
+    )
+      .then((gifData) => gifData.json())
+      .then((gif) => addGifToOut(gif.data[0].images.original.url))
+      .catch(console.log);
+  }
+}
+
+function addGifToOut(url) {
+  const firstChild = outEl.querySelector("img");
+
+  const img = document.createElement("img");
+  img.setAttribute("src", url);
+
+  outEl.insertBefore(img, firstChild);
+}
