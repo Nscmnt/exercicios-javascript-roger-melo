@@ -1,4 +1,4 @@
-"SExercicio fora do meu escopo devido eu não estar fazendo o curso";
+"Exercicio fora do meu escopo devido eu não estar fazendo o curso";
 /*
 Este exercício será um pouquinho diferente dos anteriores.
 
